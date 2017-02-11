@@ -15,7 +15,6 @@ namespace Trivia
         LinkedList<string> rockQuestions = new LinkedList<string>();
 
         int currentPlayer = 0;
-        bool isGettingOutOfPenaltyBox;
 
         public Game()
         {
@@ -56,7 +55,7 @@ namespace Trivia
             {
                 if(roll % 2 != 0)
                 {
-                    isGettingOutOfPenaltyBox = true;
+                    players[currentPlayer].IsPenaltyBox = false;
 
                     Console.WriteLine(players[currentPlayer] + " is getting out of the penalty box");
                     players[currentPlayer].Places = players[currentPlayer].Places + roll;
@@ -72,7 +71,6 @@ namespace Trivia
                 else
                 {
                     Console.WriteLine(players[currentPlayer] + " is not getting out of the penalty box");
-                    isGettingOutOfPenaltyBox = false;
                 }
 
             }
@@ -143,33 +141,13 @@ namespace Trivia
         {
             if(players[currentPlayer].IsPenaltyBox)
             {
-                if(isGettingOutOfPenaltyBox)
-                {
-                    Console.WriteLine("Answer was correct!!!!");
-                    players[currentPlayer].Purses++;
-                    Console.WriteLine(players[currentPlayer]
-                            + " now has "
-                            + players[currentPlayer].Purses
-                            + " Gold Coins.");
-
-                    bool winner = didPlayerWin();
-                    currentPlayer++;
-                    if(currentPlayer == players.Count)
-                        currentPlayer = 0;
-
-                    return winner;
-                }
-                else
-                {
-                    currentPlayer++;
-                    if(currentPlayer == players.Count)
-                        currentPlayer = 0;
-                    return true;
-                }
+                currentPlayer++;
+                if(currentPlayer == players.Count)
+                    currentPlayer = 0;
+                return true;
             }
             else
             {
-
                 Console.WriteLine("Answer was corrent!!!!");
                 players[currentPlayer].Purses++;
                 Console.WriteLine(players[currentPlayer]
