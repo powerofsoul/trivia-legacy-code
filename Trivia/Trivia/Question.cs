@@ -18,4 +18,10 @@ namespace Trivia
             this.category = category;
         }
     }
+
+    public class QuestionNotFound:Exception {
+        public QuestionNotFound() : base() { }
+        public QuestionNotFound(string message) : base(message) { }
+        public QuestionNotFound(string message,Exception inner) : base(message,inner) { }
+    }
 }
