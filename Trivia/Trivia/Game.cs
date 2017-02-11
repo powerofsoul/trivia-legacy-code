@@ -15,6 +15,11 @@ namespace Trivia
 
         public Game()
         {
+            LoadQuestion();
+        }
+
+        private void LoadQuestion()
+        {
             for(int i = 0;i < 50;i++)
             {
                 questions.Add(new Question(Categories.Pop,i));
