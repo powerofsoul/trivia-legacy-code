@@ -7,6 +7,8 @@ namespace Trivia
 {
     class Question
     {
+        public enum Category {Pop, Science, Sport, Rock}
+
         int Id { get; set; }
     }
 }
