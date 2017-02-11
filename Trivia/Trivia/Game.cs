@@ -151,7 +151,7 @@ namespace Trivia
                         + players[currentPlayer].Purses
                         + " Gold Coins.");
 
-                bool winner = didPlayerWin();
+                bool winner = players[currentPlayer].Purses!=6;
                 currentPlayer++;
                 if(currentPlayer == players.Count)
                     currentPlayer = 0;
@@ -170,12 +170,6 @@ namespace Trivia
             if(currentPlayer == players.Count)
                 currentPlayer = 0;
             return true;
-        }
-
-
-        private bool didPlayerWin()
-        {
-            return !(players[currentPlayer].Purses == 6);
         }
     }
 
