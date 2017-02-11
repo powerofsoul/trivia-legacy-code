@@ -29,13 +29,8 @@ namespace UglyTrivia
                 popQuestions.AddLast("Pop Question " + i);
                 scienceQuestions.AddLast(("Science Question " + i));
                 sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(createRockQuestion(i));
+                rockQuestions.AddLast("Rock Question " + i);
             }
-        }
-
-        public String createRockQuestion(int index)
-        {
-            return "Rock Question " + index;
         }
 
         public bool isPlayable()
