@@ -8,9 +8,9 @@ namespace Trivia
     public class Player
     {
         public string Name { get; }
-        public int Places { get; protected set; }
-        public int Purses { get; protected set; }
-        public bool IsPenaltyBox { get; protected set; }
+        public int Places { get; set; }
+        public int Purses { get; set; }
+        public bool IsPenaltyBox { get; set; }
 
         public Player(string name)
         {
