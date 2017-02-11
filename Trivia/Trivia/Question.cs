@@ -7,5 +7,6 @@ namespace Trivia
 {
     class Question
     {
+        int Id { get; set; }
     }
 }
