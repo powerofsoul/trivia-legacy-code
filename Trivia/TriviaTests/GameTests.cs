@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UglyTrivia;
+using Trivia;
 
 namespace TriviaTests
 {
