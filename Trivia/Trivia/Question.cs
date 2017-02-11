@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Trivia
 {
-    class Question
+    public class Question
     {
         public enum Categories {Pop, Science, Sport, Rock}
 
-        int Id { get; set; }
-        Categories category;
+        public int Id { get; private set; }
+        public Categories category;
         
         public Question(Categories category, int id)
         {
