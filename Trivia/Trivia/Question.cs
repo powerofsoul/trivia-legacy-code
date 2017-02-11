@@ -7,12 +7,12 @@ namespace Trivia
 {
     class Question
     {
-        public enum Category {Pop, Science, Sport, Rock}
+        public enum Categories {Pop, Science, Sport, Rock}
 
         int Id { get; set; }
-        Category category;
+        Categories category;
         
-        public Question(Category category, int id)
+        public Question(Categories category, int id)
         {
             Id = id;
             this.category = category;
