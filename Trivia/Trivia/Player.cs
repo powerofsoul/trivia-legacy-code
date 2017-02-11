@@ -5,18 +5,18 @@ using System.Text;
 
 namespace Trivia
 {
-    class Player
+    public class Player
     {
-        string Name { get; }
-        int Places { get; set; }
-        int purses { get; set; }
-        bool IsPenaltyBox { get; set; }
+        public string Name { get; }
+        public int Places { get; protected set; }
+        public int Purses { get; protected set; }
+        public bool IsPenaltyBox { get; protected set; }
 
         public Player(string name)
         {
             Name = name;
             Places = 0;
-            purses = 0;
+            Purses = 0;
             IsPenaltyBox = false;
         }
     }
