@@ -7,8 +7,6 @@ namespace UglyTrivia
 {
     public class Game
     {
-
-
         List<string> players = new List<string>();
 
         int[] places = new int[6];
@@ -26,7 +24,7 @@ namespace UglyTrivia
 
         public Game()
         {
-            for (int i = 0; i < 50; i++)
+            for(int i = 0;i < 50;i++)
             {
                 popQuestions.AddLast("Pop Question " + i);
                 scienceQuestions.AddLast(("Science Question " + i));
@@ -69,15 +67,16 @@ namespace UglyTrivia
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
-            if (inPenaltyBox[currentPlayer])
+            if(inPenaltyBox[currentPlayer])
             {
-                if (roll % 2 != 0)
+                if(roll % 2 != 0)
                 {
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[currentPlayer] + " is getting out of the penalty box");
                     places[currentPlayer] = places[currentPlayer] + roll;
-                    if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+                    if(places[currentPlayer] > 11)
+                        places[currentPlayer] = places[currentPlayer] - 12;
 
                     Console.WriteLine(players[currentPlayer]
                             + "'s new location is "
@@ -96,7 +95,8 @@ namespace UglyTrivia
             {
 
                 places[currentPlayer] = places[currentPlayer] + roll;
-                if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+                if(places[currentPlayer] > 11)
+                    places[currentPlayer] = places[currentPlayer] - 12;
 
                 Console.WriteLine(players[currentPlayer]
                         + "'s new location is "
@@ -109,22 +109,22 @@ namespace UglyTrivia
 
         private void askQuestion()
         {
-            if (currentCategory() == "Pop")
+            if(currentCategory() == "Pop")
             {
                 Console.WriteLine(popQuestions.First());
                 popQuestions.RemoveFirst();
             }
-            if (currentCategory() == "Science")
+            if(currentCategory() == "Science")
             {
                 Console.WriteLine(scienceQuestions.First());
                 scienceQuestions.RemoveFirst();
             }
-            if (currentCategory() == "Sports")
+            if(currentCategory() == "Sports")
             {
                 Console.WriteLine(sportsQuestions.First());
                 sportsQuestions.RemoveFirst();
             }
-            if (currentCategory() == "Rock")
+            if(currentCategory() == "Rock")
             {
                 Console.WriteLine(rockQuestions.First());
                 rockQuestions.RemoveFirst();
@@ -134,23 +134,32 @@ namespace UglyTrivia
 
         private String currentCategory()
         {
-            if (places[currentPlayer] == 0) return "Pop";
-            if (places[currentPlayer] == 4) return "Pop";
-            if (places[currentPlayer] == 8) return "Pop";
-            if (places[currentPlayer] == 1) return "Science";
-            if (places[currentPlayer] == 5) return "Science";
-            if (places[currentPlayer] == 9) return "Science";
-            if (places[currentPlayer] == 2) return "Sports";
-            if (places[currentPlayer] == 6) return "Sports";
-            if (places[currentPlayer] == 10) return "Sports";
+            if(places[currentPlayer] == 0)
+                return "Pop";
+            if(places[currentPlayer] == 4)
+                return "Pop";
+            if(places[currentPlayer] == 8)
+                return "Pop";
+            if(places[currentPlayer] == 1)
+                return "Science";
+            if(places[currentPlayer] == 5)
+                return "Science";
+            if(places[currentPlayer] == 9)
+                return "Science";
+            if(places[currentPlayer] == 2)
+                return "Sports";
+            if(places[currentPlayer] == 6)
+                return "Sports";
+            if(places[currentPlayer] == 10)
+                return "Sports";
             return "Rock";
         }
 
         public bool wasCorrectlyAnswered()
         {
-            if (inPenaltyBox[currentPlayer])
+            if(inPenaltyBox[currentPlayer])
             {
-                if (isGettingOutOfPenaltyBox)
+                if(isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     purses[currentPlayer]++;
@@ -161,19 +170,18 @@ namespace UglyTrivia
 
                     bool winner = didPlayerWin();
                     currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
+                    if(currentPlayer == players.Count)
+                        currentPlayer = 0;
 
                     return winner;
                 }
                 else
                 {
                     currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
+                    if(currentPlayer == players.Count)
+                        currentPlayer = 0;
                     return true;
                 }
-
-
-
             }
             else
             {
@@ -187,7 +195,8 @@ namespace UglyTrivia
 
                 bool winner = didPlayerWin();
                 currentPlayer++;
-                if (currentPlayer == players.Count) currentPlayer = 0;
+                if(currentPlayer == players.Count)
+                    currentPlayer = 0;
 
                 return winner;
             }
@@ -200,7 +209,8 @@ namespace UglyTrivia
             inPenaltyBox[currentPlayer] = true;
 
             currentPlayer++;
-            if (currentPlayer == players.Count) currentPlayer = 0;
+            if(currentPlayer == players.Count)
+                currentPlayer = 0;
             return true;
         }
 
