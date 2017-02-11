@@ -9,8 +9,8 @@ namespace TriviaTests
         [TestMethod]
         public void QuestionIsCreatedSuccesfuly()
         {
-            Question question = new Question(Question.Categories.Pop,10);
-            Assert.AreEqual(Question.Categories.Pop,question.category);
+            Question question = new Question(Categories.Pop,10);
+            Assert.AreEqual(Categories.Pop,question.category);
             Assert.AreEqual(10,question.Id);
         }
     }

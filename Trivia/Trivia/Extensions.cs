@@ -7,7 +7,7 @@ namespace Trivia
 {
     public static class Extensions
     {
-        public static Question ExtractQuestion(this List<Question> questions, Question.Categories category)
+        public static Question ExtractQuestion(this List<Question> questions, Categories category)
         {
             foreach(Question q in questions)
             {
