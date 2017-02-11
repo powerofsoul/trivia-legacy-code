@@ -10,7 +10,12 @@ namespace Trivia
         public enum Category {Pop, Science, Sport, Rock}
 
         int Id { get; set; }
-        Category cat;
-
+        Category category;
+        
+        public Question(Category category, int id)
+        {
+            Id = id;
+            this.category = category;
+        }
     }
 }
