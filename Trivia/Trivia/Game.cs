@@ -9,10 +9,7 @@ namespace Trivia
     {
         List<Player> players = new List<Player>();
 
-        LinkedList<string> popQuestions = new LinkedList<string>();
-        LinkedList<string> scienceQuestions = new LinkedList<string>();
-        LinkedList<string> sportsQuestions = new LinkedList<string>();
-        LinkedList<string> rockQuestions = new LinkedList<string>();
+        List<Question> questions = new List<Question>();
 
         int currentPlayer = 0;
 
@@ -20,10 +17,10 @@ namespace Trivia
         {
             for(int i = 0;i < 50;i++)
             {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast("Rock Question " + i);
+                questions.Add(new Question(Categories.Pop,i));
+                questions.Add(new Question(Categories.Science,i));
+                questions.Add(new Question(Categories.Sport,i));
+                questions.Add(new Question(Categories.Rock,i));
             }
         }
 
@@ -92,49 +89,43 @@ namespace Trivia
 
         private void askQuestion()
         {
-            if(currentCategory() == "Pop")
+            switch(currentCategory())
             {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
-            }
-            if(currentCategory() == "Science")
-            {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
-            }
-            if(currentCategory() == "Sports")
-            {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
-            }
-            if(currentCategory() == "Rock")
-            {
-                Console.WriteLine(rockQuestions.First());
-                rockQuestions.RemoveFirst();
+                case Categories.Pop:
+                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    break;
+                case Categories.Science:
+                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    break;
+                case Categories.Sport:
+                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    break;
+                case Categories.Rock:
+                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    break;
             }
         }
 
-        private String currentCategory()
+        private Categories currentCategory()
         {
-            if(players[currentPlayer].Places == 0)
-                return "Pop";
-            if(players[currentPlayer].Places == 4)
-                return "Pop";
-            if(players[currentPlayer].Places == 8)
-                return "Pop";
-            if(players[currentPlayer].Places == 1)
-                return "Science";
-            if(players[currentPlayer].Places == 5)
-                return "Science";
-            if(players[currentPlayer].Places == 9)
-                return "Science";
-            if(players[currentPlayer].Places == 2)
-                return "Sports";
-            if(players[currentPlayer].Places == 6)
-                return "Sports";
-            if(players[currentPlayer].Places == 10)
-                return "Sports";
-            return "Rock";
+            switch(players[currentPlayer].Places)
+            {
+                case 0:
+                case 4:
+                case 8:
+                    return Categories.Pop;
+                case 1:
+                case 5:
+                case 9:
+                    return Categories.Science;
+                case 2:
+                case 6:
+                case 10:
+                    return Categories.Sport;
+                default:
+                    return Categories.Rock;
+
+            }
         }
 
         public bool wasCorrectlyAnswered()
