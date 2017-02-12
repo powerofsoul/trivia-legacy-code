@@ -31,6 +31,27 @@ namespace Trivia
             LoadQuestion();
         }
 
+        public void Play()
+        {
+            Random rand = new Random();
+            bool aWiner = false;
+            do
+            {
+
+                roll(rand.Next(5) + 1);
+
+                if(rand.Next(9) == 7)
+                {
+                    aWiner = wasCorrectlyAnswered();
+                }
+                else
+                {
+                    aWiner = wrongAnswer();
+                }
+            } while(!aWiner);
+
+        }
+
         private void LoadQuestion()
         {
             for(int i = 0;i < 50;i++)
