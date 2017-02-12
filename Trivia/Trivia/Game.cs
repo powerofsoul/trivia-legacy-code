@@ -8,8 +8,9 @@ namespace Trivia
     public class Game
     {
         List<Player> players = new List<Player>();
-
         List<Question> questions = new List<Question>();
+
+        public int WinningCondition { get; private set; } = 6;
 
         private int currentPlayer;
 
@@ -196,6 +197,11 @@ namespace Trivia
 
             CurrentPlayer++;
             return true;
+        }
+        
+        public int HighestScore()
+        {
+            return players.Max(s => s.Purses);
         }
     }
 
