@@ -35,21 +35,20 @@ namespace Trivia
         public void Play()
         {
             Random rand = new Random();
-            bool aWiner = false;
-            do
-            {
 
+            while(HighestScore() < WinningCondition)
+            {
                 roll(rand.Next(5) + 1);
 
                 if(rand.Next(9) == 7)
                 {
-                    aWiner =  wrongAnswer();
+                    wrongAnswer();             
                 }
                 else
                 {
-                    aWiner = wasCorrectlyAnswered();
+                    wasCorrectlyAnswered();
                 }
-            } while(aWiner);
+            } 
 
         }
 
@@ -198,7 +197,7 @@ namespace Trivia
             CurrentPlayer++;
             return true;
         }
-        
+
         public int HighestScore()
         {
             return players.Max(s => s.Purses);
