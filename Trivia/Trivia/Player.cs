@@ -22,11 +22,13 @@ namespace Trivia
 
         public void MoveToPenalityBox()
         {
+            Console.WriteLine(this + " was sent to the penalty box");
             IsPenaltyBox = true;
         }
         
         public void MoveOutOfPenalityBox()
         {
+            Console.WriteLine(this + " is getting out of the penalty box");
             IsPenaltyBox = false;
         }
     }

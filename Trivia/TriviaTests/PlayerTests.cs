@@ -23,5 +23,23 @@ namespace TriviaTests
             Assert.AreEqual(0,player.Purses);
             Assert.IsFalse(player.IsPenaltyBox);
         }
+
+        [TestMethod]
+        public void PlayerIsMovedToPenalityBox()
+        {
+            player.MoveOutOfPenalityBox();
+            Assert.IsFalse(player.IsPenaltyBox);
+            player.MoveToPenalityBox();
+            Assert.IsTrue(player.IsPenaltyBox);
+        }
+
+        [TestMethod]
+        public void PlayerIsMovedOutOfPenalityBox()
+        {
+            player.MoveToPenalityBox();
+            Assert.IsTrue(player.IsPenaltyBox);
+            player.MoveOutOfPenalityBox();
+            Assert.IsFalse(player.IsPenaltyBox);
+        }
     }
 }

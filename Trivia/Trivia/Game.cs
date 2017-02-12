@@ -93,7 +93,6 @@ namespace Trivia
                 {
                     players[CurrentPlayer].MoveToPenalityBox();
 
-                    Console.WriteLine(players[CurrentPlayer] + " is getting out of the penalty box");
                     players[CurrentPlayer].Places = players[CurrentPlayer].Places + roll;
                     if(players[CurrentPlayer].Places > 11)
                         players[CurrentPlayer].Places = players[CurrentPlayer].Places - 12;
@@ -193,7 +192,6 @@ namespace Trivia
         public bool wrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
-            Console.WriteLine(players[CurrentPlayer] + " was sent to the penalty box");
             players[CurrentPlayer].MoveToPenalityBox();
 
             CurrentPlayer++;
