@@ -37,5 +37,10 @@ namespace Trivia
             return this.Name;
         }
 
+        public string GetPurses()
+        {
+            return $"{this} now has {Purses} Gold Coins.";
+        }
+
     }
 }

@@ -177,10 +177,7 @@ namespace Trivia
             {
                 Console.WriteLine("Answer was corrent!!!!");
                 Players[CurrentPlayer].Purses++;
-                Console.WriteLine(Players[CurrentPlayer]
-                        + " now has "
-                        + Players[CurrentPlayer].Purses
-                        + " Gold Coins.");
+                Console.WriteLine(Players[currentPlayer].GetPurses());
 
                 bool winner = Players[CurrentPlayer].Purses != 6;
                 CurrentPlayer++;
