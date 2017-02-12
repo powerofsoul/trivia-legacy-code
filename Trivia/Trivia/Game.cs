@@ -42,13 +42,13 @@ namespace Trivia
 
                 if(rand.Next(9) == 7)
                 {
-                    aWiner = wasCorrectlyAnswered();
+                    aWiner =  wrongAnswer();
                 }
                 else
                 {
-                    aWiner = wrongAnswer();
+                    aWiner = wasCorrectlyAnswered();
                 }
-            } while(!aWiner);
+            } while(aWiner);
 
         }
 
