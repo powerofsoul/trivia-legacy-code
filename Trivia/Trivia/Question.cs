@@ -17,6 +17,11 @@ namespace Trivia
             Id = id;
             this.category = category;
         }
+
+        public override String ToString()
+        {
+            return $"{category.ToString()} Question {Id}";
+        }
     }
 
     public class QuestionNotFound:Exception {
