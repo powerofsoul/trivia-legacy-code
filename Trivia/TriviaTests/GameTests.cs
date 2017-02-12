@@ -45,5 +45,15 @@ namespace TriviaTests
             _game.add("FlorinTest");
             Assert.AreEqual(1,_game.howManyPlayers());
         }
+
+        [TestMethod]
+        public void GameHasAWinner()
+        {
+            _game.add("T1");
+            _game.add("T2");
+            _game.add("T3");
+            _game.Play();
+            Assert.AreEqual(_game.WinningCondition,_game.HighestScore());
+        }
     }
 }
