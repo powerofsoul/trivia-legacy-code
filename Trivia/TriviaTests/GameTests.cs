@@ -38,5 +38,12 @@ namespace TriviaTests
             _game.CurrentPlayer++;
             Assert.AreEqual(0,_game.CurrentPlayer);
         }
+        
+        [TestMethod]
+        public void PlayerIsAdded()
+        {   //TODO Please check also the name
+            _game.add("FlorinTest");
+            Assert.AreEqual(1,_game.howManyPlayers());
+        }
     }
 }
