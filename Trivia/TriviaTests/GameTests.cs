@@ -23,21 +23,6 @@ namespace TriviaTests
             _game.Add("Test2");
             Assert.IsTrue(_game.IsPlayable());
         }
-
-        [TestMethod]
-        public void CurrentPlayerIsGoingToFirstAfterLast()
-        {
-            _game.Add("T1");
-            _game.Add("T2");
-            _game.Add("T3");
-            Assert.AreEqual(0,_game.CurrentPlayer);
-            _game.CurrentPlayer++;
-            Assert.AreEqual(1,_game.CurrentPlayer);
-            _game.CurrentPlayer++;
-            Assert.AreEqual(2,_game.CurrentPlayer);
-            _game.CurrentPlayer++;
-            Assert.AreEqual(0,_game.CurrentPlayer);
-        }
         
         [TestMethod]
         public void PlayerIsAdded()
