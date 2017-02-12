@@ -31,5 +31,11 @@ namespace Trivia
             Console.WriteLine(this + " is getting out of the penalty box");
             IsPenaltyBox = false;
         }
+
+        public override String ToString()
+        {
+            return this.Name;
+        }
+
     }
 }
