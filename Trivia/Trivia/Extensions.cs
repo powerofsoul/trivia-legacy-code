@@ -20,5 +20,15 @@ namespace Trivia
 
             throw new QuestionNotFound("Question not Found");
         }
+
+        public static Player NextPlayerAfter(this List<Player> players,Player currentPlayer)
+        {
+            int position = players.IndexOf(currentPlayer);
+            position++;
+            if(position >= players.Count)
+                return players.First();
+            else
+                return players[position];
+        }
     }
 }
