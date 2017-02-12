@@ -91,7 +91,7 @@ namespace Trivia
             {
                 if(roll % 2 != 0)
                 {
-                    players[CurrentPlayer].IsPenaltyBox = false;
+                    players[CurrentPlayer].MoveToPenalityBox();
 
                     Console.WriteLine(players[CurrentPlayer] + " is getting out of the penalty box");
                     players[CurrentPlayer].Places = players[CurrentPlayer].Places + roll;
@@ -194,7 +194,7 @@ namespace Trivia
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(players[CurrentPlayer] + " was sent to the penalty box");
-            players[CurrentPlayer].IsPenaltyBox = true;
+            players[CurrentPlayer].MoveToPenalityBox();
 
             CurrentPlayer++;
             return true;

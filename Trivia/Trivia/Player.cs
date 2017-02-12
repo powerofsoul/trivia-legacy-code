@@ -19,5 +19,15 @@ namespace Trivia
             Purses = 0;
             IsPenaltyBox = false;
         }
+
+        public void MoveToPenalityBox()
+        {
+            IsPenaltyBox = true;
+        }
+        
+        public void MoveOutOfPenalityBox()
+        {
+            IsPenaltyBox = false;
+        }
     }
 }
