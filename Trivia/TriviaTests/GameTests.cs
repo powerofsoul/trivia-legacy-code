@@ -19,17 +19,17 @@ namespace TriviaTests
         [TestMethod]
         public void GameIsPlayable()
         {
-            _game.add("Test");
-            _game.add("Test2");
-            Assert.IsTrue(_game.isPlayable());
+            _game.Add("Test");
+            _game.Add("Test2");
+            Assert.IsTrue(_game.IsPlayable());
         }
 
         [TestMethod]
         public void CurrentPlayerIsGoingToFirstAfterLast()
         {
-            _game.add("T1");
-            _game.add("T2");
-            _game.add("T3");
+            _game.Add("T1");
+            _game.Add("T2");
+            _game.Add("T3");
             Assert.AreEqual(0,_game.CurrentPlayer);
             _game.CurrentPlayer++;
             Assert.AreEqual(1,_game.CurrentPlayer);
@@ -42,16 +42,16 @@ namespace TriviaTests
         [TestMethod]
         public void PlayerIsAdded()
         {   //TODO Please check also the name
-            _game.add("FlorinTest");
-            Assert.AreEqual(1,_game.howManyPlayers());
+            _game.Add("FlorinTest");
+            Assert.AreEqual(1,_game.PlayerAmount());
         }
 
         [TestMethod]
         public void GameHasAWinner()
         {
-            _game.add("T1");
-            _game.add("T2");
-            _game.add("T3");
+            _game.Add("T1");
+            _game.Add("T2");
+            _game.Add("T3");
             _game.Play();
             Assert.AreEqual(_game.WinningCondition,_game.HighestScore());
         }

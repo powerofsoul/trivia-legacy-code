@@ -7,8 +7,8 @@ namespace Trivia
 {
     public class Game
     {
-        List<Player> players = new List<Player>();
-        List<Question> questions = new List<Question>();
+        List<Player> Players = new List<Player>();
+        List<Question> Questions = new List<Question>();
 
         public int WinningCondition { get; private set; } = 6;
 
@@ -19,7 +19,7 @@ namespace Trivia
             get { return currentPlayer; }
             set
             {
-                if(value == players.Count)
+                if(value == Players.Count)
                     currentPlayer = 0;
                 else
                     currentPlayer = value;
@@ -38,15 +38,15 @@ namespace Trivia
 
             while(HighestScore() < WinningCondition)
             {
-                roll(rand.Next(5) + 1);
+                Roll(rand.Next(5) + 1);
 
                 if(rand.Next(9) == 7)
                 {
-                    wrongAnswer();             
+                    WrongAnswer();             
                 }
                 else
                 {
-                    wasCorrectlyAnswered();
+                    CorrectAnswer();
                 }
             } 
 
@@ -56,97 +56,97 @@ namespace Trivia
         {
             for(int i = 0;i < 50;i++)
             {
-                questions.Add(new Question(Categories.Pop,i));
-                questions.Add(new Question(Categories.Science,i));
-                questions.Add(new Question(Categories.Sport,i));
-                questions.Add(new Question(Categories.Rock,i));
+                Questions.Add(new Question(Categories.Pop,i));
+                Questions.Add(new Question(Categories.Science,i));
+                Questions.Add(new Question(Categories.Sport,i));
+                Questions.Add(new Question(Categories.Rock,i));
             }
         }
 
-        public bool isPlayable()
+        public bool IsPlayable()
         {
-            return (howManyPlayers() >= 2);
+            return (PlayerAmount() >= 2);
         }
 
-        public bool add(String playerName)
+        public bool Add(String playerName)
         {
-            players.Add(new Player(playerName));
+            Players.Add(new Player(playerName));
 
             Console.WriteLine(playerName + " was added");
-            Console.WriteLine("They are player number " + players.Count);
+            Console.WriteLine("They are player number " + Players.Count);
             return true;
         }
 
-        public int howManyPlayers()
+        public int PlayerAmount()
         {
-            return players.Count;
+            return Players.Count;
         }
 
-        public void roll(int roll)
+        public void Roll(int roll)
         {
-            Console.WriteLine(players[CurrentPlayer] + " is the current player");
+            Console.WriteLine(Players[CurrentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
-            if(players[CurrentPlayer].IsPenaltyBox)
+            if(Players[CurrentPlayer].IsPenaltyBox)
             {
                 if(roll % 2 != 0)
                 {
-                    players[CurrentPlayer].MoveToPenalityBox();
+                    Players[CurrentPlayer].MoveToPenalityBox();
 
-                    players[CurrentPlayer].Places = players[CurrentPlayer].Places + roll;
-                    if(players[CurrentPlayer].Places > 11)
-                        players[CurrentPlayer].Places = players[CurrentPlayer].Places - 12;
+                    Players[CurrentPlayer].Places = Players[CurrentPlayer].Places + roll;
+                    if(Players[CurrentPlayer].Places > 11)
+                        Players[CurrentPlayer].Places = Players[CurrentPlayer].Places - 12;
 
-                    Console.WriteLine(players[CurrentPlayer]
+                    Console.WriteLine(Players[CurrentPlayer]
                             + "'s new location is "
-                            + players[CurrentPlayer].Places);
-                    Console.WriteLine("The category is " + currentCategory());
-                    askQuestion();
+                            + Players[CurrentPlayer].Places);
+                    Console.WriteLine("The category is " + CurrentCategory());
+                    AskQuestion();
                 }
                 else
                 {
-                    Console.WriteLine(players[CurrentPlayer] + " is not getting out of the penalty box");
+                    Console.WriteLine(Players[CurrentPlayer] + " is not getting out of the penalty box");
                 }
 
             }
             else
             {
 
-                players[CurrentPlayer].Places = players[CurrentPlayer].Places + roll;
-                if(players[CurrentPlayer].Places > 11)
-                    players[CurrentPlayer].Places = players[CurrentPlayer].Places - 12;
+                Players[CurrentPlayer].Places = Players[CurrentPlayer].Places + roll;
+                if(Players[CurrentPlayer].Places > 11)
+                    Players[CurrentPlayer].Places = Players[CurrentPlayer].Places - 12;
 
-                Console.WriteLine(players[CurrentPlayer]
+                Console.WriteLine(Players[CurrentPlayer]
                         + "'s new location is "
-                        + players[CurrentPlayer].Places);
-                Console.WriteLine("The category is " + currentCategory());
-                askQuestion();
+                        + Players[CurrentPlayer].Places);
+                Console.WriteLine("The category is " + CurrentCategory());
+                AskQuestion();
             }
 
         }
 
-        private void askQuestion()
+        private void AskQuestion()
         {
-            switch(currentCategory())
+            switch(CurrentCategory())
             {
                 case Categories.Pop:
-                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    Console.WriteLine(Questions.ExtractQuestion(Categories.Pop));
                     break;
                 case Categories.Science:
-                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    Console.WriteLine(Questions.ExtractQuestion(Categories.Pop));
                     break;
                 case Categories.Sport:
-                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    Console.WriteLine(Questions.ExtractQuestion(Categories.Pop));
                     break;
                 case Categories.Rock:
-                    Console.WriteLine(questions.ExtractQuestion(Categories.Pop));
+                    Console.WriteLine(Questions.ExtractQuestion(Categories.Pop));
                     break;
             }
         }
 
-        private Categories currentCategory()
+        private Categories CurrentCategory()
         {
-            switch(players[CurrentPlayer].Places)
+            switch(Players[CurrentPlayer].Places)
             {
                 case 0:
                 case 4:
@@ -166,9 +166,9 @@ namespace Trivia
             }
         }
 
-        public bool wasCorrectlyAnswered()
+        public bool CorrectAnswer()
         {
-            if(players[CurrentPlayer].IsPenaltyBox)
+            if(Players[CurrentPlayer].IsPenaltyBox)
             {
                 CurrentPlayer++;
                 return true;
@@ -176,23 +176,23 @@ namespace Trivia
             else
             {
                 Console.WriteLine("Answer was corrent!!!!");
-                players[CurrentPlayer].Purses++;
-                Console.WriteLine(players[CurrentPlayer]
+                Players[CurrentPlayer].Purses++;
+                Console.WriteLine(Players[CurrentPlayer]
                         + " now has "
-                        + players[CurrentPlayer].Purses
+                        + Players[CurrentPlayer].Purses
                         + " Gold Coins.");
 
-                bool winner = players[CurrentPlayer].Purses != 6;
+                bool winner = Players[CurrentPlayer].Purses != 6;
                 CurrentPlayer++;
 
                 return winner;
             }
         }
 
-        public bool wrongAnswer()
+        public bool WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
-            players[CurrentPlayer].MoveToPenalityBox();
+            Players[CurrentPlayer].MoveToPenalityBox();
 
             CurrentPlayer++;
             return true;
@@ -200,7 +200,7 @@ namespace Trivia
 
         public int HighestScore()
         {
-            return players.Max(s => s.Purses);
+            return Players.Max(s => s.Purses);
         }
     }
 
